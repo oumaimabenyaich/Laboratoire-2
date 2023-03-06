@@ -1,10 +1,10 @@
-import sys 
 import re 
 
-with open('data.txt') as file :
-    lignes = file.readlines()
+def process(datatxt):
+    pattern = re.compile(r'[-+]?[0-9]\d*')
+    with open(datatxt) as file :
+        for i, line in enumerate(file):
+            L = pattern.findall(line)
+            print ('Line {}: {}'.format(i+1,','.join(L)))
 
-for line in lignes : 
-    a = line.split()
-    print(a)
-    
+print(process('data.txt'))
